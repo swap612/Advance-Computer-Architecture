@@ -33,28 +33,6 @@ unsigned pc;	// Program counter of load/store instruction that missed
 
 For this problem, you won't require the i_or_d and pc fields.
 
-Here is a code snippet that you can use to read the traces. Assume that you
-take the file name prefix (e.g., bzip2.log_l1misstrace) and the number of traces
-for the application under question (e.g., 2 for bzip2) from command line.
-
-int numtraces = atoi(argv[2]);
-for (k=0; k<numtraces; k++) {
-      sprintf(input_name, "%s_%d", argv[1], k);
-      fp = fopen(input_name, "rb");
-      assert(fp != NULL);
-
-      while (!feof(fp)) {
-         fread(&iord, sizeof(char), 1, fp);
-         fread(&type, sizeof(char), 1, fp);
-         fread(&addr, sizeof(unsigned long long), 1, fp);
-         fread(&pc, sizeof(unsigned), 1, fp);
-
-         // Process the entry
-      }
-      fclose(fp);
-      printf("Done reading file %d!\n", k);
-}
-
 In this problem, you need to simulate a two-level cache hierarchy and pass the
 L1 cache miss trace through them. I will call the two levels of the hierarchy
 L2 and L3. The L2 cache should be 512 KB in size, 8-way set associative, and
